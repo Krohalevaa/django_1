@@ -48,13 +48,14 @@ post_list: list = list()
 
 for post in posts:
     post_list.append(post['id'])
+# {p['id']: p for p in posts}
 
 
 def post_detail(request, id):
-    template = 'blog/detail.html'
-    context = {'post': posts[id]}
     if id not in post_list:
         raise Http404
+    template = 'blog/detail.html'
+    context = {'post': posts[id]}
     return render(request, template, context)
 
 
