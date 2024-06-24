@@ -45,10 +45,7 @@ posts = [
 ]
 
 post_list: list = list()
-
-for post in posts:
-    post_list.append(post['id'])
-# {p['id']: p for p in posts}
+{post_list.append(post['id']): post for post in posts}
 
 
 def post_detail(request, id):
@@ -67,5 +64,5 @@ def index(request):
 
 def category_posts(request, category_slug):
     template = 'blog/category.html'
-    context = {'post': category_slug}
+    context = {'category_slug': category_slug}
     return render(request, template, context)
