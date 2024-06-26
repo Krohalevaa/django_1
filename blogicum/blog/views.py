@@ -44,13 +44,12 @@ posts = [
     },
 ]
 
-post_list: list = list()
-{post_list.append(post['id']): post for post in posts}
 
+indexed_posts = {p['id']: p for p in posts}
 
 def post_detail(request, id):
-    if id not in post_list:
-        raise Http404
+    if id not in indexed_posts:
+        raise Http404 
     template = 'blog/detail.html'
     context = {'post': posts[id]}
     return render(request, template, context)
