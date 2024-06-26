@@ -52,7 +52,7 @@ def post_detail(request, id):
     if id not in indexed_posts:
         raise Http404
     template = 'blog/detail.html'
-    context = {'post': posts[id]}
+    context = {'post': indexed_posts[id]}
     return render(request, template, context)
 
 
