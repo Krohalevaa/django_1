@@ -47,9 +47,10 @@ posts = [
 
 indexed_posts = {p['id']: p for p in posts}
 
+
 def post_detail(request, id):
     if id not in indexed_posts:
-        raise Http404 
+        raise Http404
     template = 'blog/detail.html'
     context = {'post': posts[id]}
     return render(request, template, context)
